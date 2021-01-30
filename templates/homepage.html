@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+</head>
+<body>
+    <h1>Students</h1>
+    <ul>
+        {% for student in students %}
+            <li><a href="/student?github={{ student.github }}">
+                {{ student.first_name }} {{ student.last_name }}
+            </a></li>
+        {% endfor %}
+    </ul>
+    <h1>Projects</h1>
+    <ul>
+        {% for project in projects %}
+            <li><a href="/project?title={{ project.title }}">
+                {{ project.title }} {{ project.max_grade }}
+            </a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

@@ -11,6 +11,36 @@ app = Flask(__name__)
 db = SQLAlchemy()
 
 
+def get_students():
+    """Get all students"""
+
+    QUERY = """
+        SELECT first_name, last_name, github
+        FROM students
+        """
+
+    db_cursor = db.session.execute(QUERY)
+
+    all_students = db_cursor.fetchall()
+
+    return all_students
+
+
+def get_projects():
+    """Get all projects"""
+
+    QUERY = """
+        SELECT title, max_grade
+        FROM projects
+        """
+
+    db_cursor = db.session.execute(QUERY)
+
+    all_projects = db_cursor.fetchall()
+
+    return all_projects
+
+
 def connect_to_db(app):
     """Connect the database to our Flask app."""
 

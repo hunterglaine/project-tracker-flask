@@ -6,6 +6,18 @@ import hackbright
 
 app = Flask(__name__)
 
+@app.route("/")
+def show_homepage():
+
+    all_students = hackbright.get_students()
+
+    all_projects = hackbright.get_projects()
+
+    return render_template("/homepage.html", 
+                            students=all_students,
+                            projects=all_projects)
+
+
 @app.route("/student-add-form")
 def display_student_form():
     """Display student form."""
@@ -44,13 +56,31 @@ def get_student():
 
     first, last, github = hackbright.get_student_by_github(github)
 
+    projects = hackbright.get_grades_by_github(github)
+
     html = render_template("student_info.html",
                            first=first,
                            last=last,
-                           github=github)
+                           github=github,
+                           projects=projects)
 
     return html
 
+
+@app.route("/project")
+def get_project():
+
+    title = request.args.get('title')
+
+    title, description, max_grade = hackbright.get_project_by_title(title)
+
+    grades = hackbright.get_grades_by_title(title)
+    
+    return render_template('project_info.html',
+                            title=title,
+                            description=description,
+                            max_grade=max_grade,
+                            grades=grades)
 
 if __name__ == "__main__":
     hackbright.connect_to_db(app)

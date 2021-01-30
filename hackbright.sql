@@ -27,7 +27,7 @@ SET search_path = public, pg_catalog;
 
 SET default_tablespace = '';
 
-SET default_with_oids = false;
+SET default_with_oids = false; 
 
 --
 -- Name: grades; Type: TABLE; Schema: public; Owner: -; Tablespace: 

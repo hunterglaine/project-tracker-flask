@@ -7,5 +7,13 @@
   <h1>{{ first }} {{ last }}</h1>
 
   <p>GitHub Account: {{ github }}</p>
+  <h2>Completed Projects</h2>
+  <ul>
+    {% for project in projects %}
+      <li>Project Title: 
+        <a href="/project?title={{ project.project_title }}" >{{ project.project_title }} </a>
+        Grade: {{ project.grade}}</li>
+    {% endfor %}
+  </ul>
 </body>
 </html>
