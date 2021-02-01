@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add A New Project</title>
+</head>
+<body>
+    <h1>Add A New Project</h1>
+    <form action="/project-add" method="POST"> 
+        <div>
+            <label>Enter a project name: </label>
+            <input type="text" name="title">
+        </div>
+        <div>
+            <label>Enter a project description: </label>
+            <textarea name="description"></textarea>
+        </div>
+        <div>
+            <label>Enter a max grade for the project: </label>
+            <input type="text" name="max_grade">
+        </div>
+        <input type="submit">
+    </form> 
+</body>
+</html>
